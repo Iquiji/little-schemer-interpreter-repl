@@ -9,6 +9,19 @@ fn main() {
 
     loop {
         let our_input: String = prompt("> ");
+
+        if our_input.is_empty(){
+            continue;
+        }
+        if our_input == "exit" || our_input == "quit"{
+            break;
+        }
+        if our_input == "load example"{
+            println!("(define factorial (lambda (n) (cond ((eq? n 0) 1) (else (* n (factorial (- n 1)))))))");
+            continue;
+        }
+
+
         // (define factorial (lambda (n) (cond ((eq? n 0) 1) (else (* n (factorial (- n 1))))))) works
         let res = execute_form_with_ast_custom_interpreter(&mut interpreter, &our_input);
 
